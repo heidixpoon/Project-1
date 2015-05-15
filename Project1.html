@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Project #1: Tic Tac Toe </title>
+	<meta name="viewpoint" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" media="(min-width:640px)" href="Project1.css">
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+
+
+
+<body>
+
+
+<h1>The X & O Game.</h1>
+
+
+
+
+<div class="whole">
+
+<div class="pure-g">	
+
+	<div class= "pure-u-1-3 boxes">
+		<div class="innerbox"  id="zero">
+			<p></p>
+		</div>
+	</div>
+
+	<div class = "pure-u-1-3 boxes">
+		<div class="innerbox" id="one"> 
+		</div>
+	</div>
+
+	<div class = "pure-u-1-3 boxes">
+		<div class="innerbox" id="two"> 
+		</div>
+	</div>
+</div>
+
+
+<div class="pure-g">	
+
+	<div class = "pure-u-1-3 boxes">
+		<div class="innerbox" id="three"> 
+		</div>
+	</div>
+
+	<div class = "pure-u-1-3 boxes">
+		<div class="innerbox"  id="four"> 
+		</div>
+	</div>
+
+	<div class = "pure-u-1-3 boxes">
+		<div class="innerbox" id="five" > 
+		</div>
+	</div>
+
+</div>
+
+
+<div class="pure-g">
+
+	<div class = "pure-u-1-3 boxes">
+		<div class="innerbox"  id="six"> 
+		</div>
+	</div>
+
+	<div class = "pure-u-1-3 boxes">
+		<div class="innerbox"  id="seven"> 
+		</div>
+	</div>
+
+	<div class = "pure-u-1-3 boxes">
+		<div class="innerbox" id="eight"> 
+		</div>
+	</div>
+
+</div>
+
+<br>
+<div class= "button"><button>Play again!</button>
+
+</div>
+
+
+
+
+<script>
+
+
+
+//Click data to make X or O appear
+
+
+
+$(document).ready(function() {
+
+	$('.innerbox').click(function(){
+			$(this).text(currentplayer);
+			
+
+			var boxid = $(this).attr("id");
+	
+
+			//define a function that will retrieve the text associated with id
+			function getValue (id){
+				//console.log($('#'+id).text());
+				return $('#'+id).text();
+			}
+
+			//define function that will determine if there is true/false in a group of 3 values from the array
+			function checkOneRow (sq1,sq2,sq3){
+				//console.log(sq1,sq2,sq3);
+				if (sq1=="X" && sq2=="X" && sq3=="X") {
+					alert('X wins!');
+					return true;
+
+				}
+
+				else if(sq1=="O" && sq2=="O" && sq3=="O") {
+					alert('O wins!');
+					return true;
+
+				}
+				
+				else {
+					return false;
+				}
+			}
+
+
+			if (currentplayer =="O") {
+				(currentplayer="X");
+
+				checkOneRow(getValue("zero"), getValue("one"), getValue("two"));
+				checkOneRow(getValue("three"), getValue("four"), getValue("five"));
+				checkOneRow(getValue("six"), getValue("seven"), getValue("eight"));
+				checkOneRow(getValue("zero"), getValue("three"), getValue("six"));
+				checkOneRow(getValue("one"), getValue("four"), getValue("seven"));
+				checkOneRow(getValue("two"), getValue("five"), getValue("eight"));
+				checkOneRow(getValue("zero"), getValue("four"), getValue("eight"));
+				checkOneRow(getValue("two"), getValue("four"), getValue("six"));
+
+
+
+			}
+			else if (currentplayer == "X") {
+				(currentplayer = "O");
+
+				checkOneRow(getValue("zero"), getValue("one"), getValue("two"));
+				checkOneRow(getValue("three"), getValue("four"), getValue("five"));
+				checkOneRow(getValue("six"), getValue("seven"), getValue("eight"));
+				checkOneRow(getValue("zero"), getValue("three"), getValue("six"));
+				checkOneRow(getValue("one"), getValue("four"), getValue("seven"));
+				checkOneRow(getValue("two"), getValue("five"), getValue("eight"));
+				checkOneRow(getValue("zero"), getValue("four"), getValue("eight"));
+				checkOneRow(getValue("two"), getValue("four"), getValue("six"));
+			}
+
+		});
+
+
+
+var currentplayer="X"
+	
+});
+
+
+
+$( "button" ).click(function() {
+  $( ".innerbox" ).siblings().empty();
+});
+
+
+	// $('.innerbox').click(function(){
+	// 	$(this).attr(.css("color","white");
+	// });
+
+// 	$('.innerbox').click(function(){
+// 		$(this).append("X").css("color","white")
+// 	});
+
+// 	$('.innerbox').click(function(){
+// 		myArray.push("x")
+// 		// myArray.push( $(this).attr("x") )
+// 	});
+// });
+
+
+
+
+//Plugging values from the array to test in the function checkOneRow
+
+
+
+// if there is a true, then alert Win
+
+
+
+// turn
+// checkOneRow
+
+
+// 	$('.boxes').click(function(){
+// 		myArray.push ( $(this).attr("x") );
+
+// 	});
+
+// });
+
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>
